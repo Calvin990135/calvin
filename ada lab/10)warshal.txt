@@ -1,0 +1,42 @@
+
+#include <bits/stdc++.h>
+#define INF 0
+using namespace std;
+
+void printSoln(int dist[][4]) {
+    cout << "Transitive Closure:\n";
+    for(int i = 0; i < 4; i++){
+        for(int j = 0; j < 4; j++) {
+            cout << dist[i][j] << " ";
+        }
+        cout << endl;
+    }
+}
+
+void warshallAlgo(int dist[][4]) {
+     for(int k = 0; k < 4; k++) {
+          for(int i = 0; i < 4; i++) {
+            for(int j = 0; j < 4; j++) {
+                dist[i][j] =  dist[i][j] || dist[i][k] && dist[k][j];
+            }
+        }
+    }
+
+    printSoln(dist);
+}
+
+int main() {
+int graph[4][4];
+cout<<"Enter values for adj matrix\n";
+for(int i=0;i<4;i++){
+cout<<"Enter values for "<<(i+1)<<"row"<<endl;
+for(int j=0;j<4;j++){
+cin>>graph[i][j];
+}
+}
+   
+    warshallAlgo(graph);
+    return 0;
+
+}
+
